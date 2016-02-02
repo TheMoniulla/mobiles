@@ -1,0 +1,31 @@
+%h1
+  %b= @mobile.name
+
+%p
+  %b Brand:
+  = @mobile.brand
+
+%p
+  %b Touchscreen:
+  = @mobile.touchscreen ? 'yes' : 'no'
+
+%p
+  %b Display size:
+  = @mobile.display_size
+
+%p
+  %b Weight:
+  = @mobile.weight
+
+%p
+  %b Price:
+  = @mobile.price
+  $
+
+
+= simple_form_for [@user, @cart_item] do |f|
+  =f.input :quantity
+  =f.input :mobile_id, as: :hidden, input_html: {value: @mobile.id}
+  =f.submit 'Add to cart'
+
+= link_to 'Back to list', user_mobiles_path(@user)

@@ -1,0 +1,24 @@
+%h1 Mobile phones
+= link_to 'New mobile', new_admin_mobile_path, class: 'btn btn-success'
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Brand
+    %th Touchscreen
+    %th Display size
+    %th Weight
+    %th Price
+    %th Actions
+  - @mobiles.each do |mobile|
+    %tr
+      %td= mobile.name
+      %td= mobile.brand
+      %td= mobile.touchscreen
+      %td= mobile.display_size
+      %td= mobile.weight
+      %td= mobile.price_for_display
+      %td
+        = link_to 'Show', admin_mobile_path(mobile.id)
+        = link_to 'Edit', edit_admin_mobile_path(mobile.id)
+        = link_to 'Delete', admin_mobile_path(mobile.id), method: :delete, data: {confirm: 'Are you sure?'}

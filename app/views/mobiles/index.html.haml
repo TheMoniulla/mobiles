@@ -1,0 +1,22 @@
+%h1 Mobile phones
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Brand
+    %th Touchscreen
+    %th Display size
+    %th Weight
+    %th Price
+  - @mobiles.each do |mobile|
+    %tr
+      %td= link_to mobile.name, user_mobile_path(@user, mobile.id)
+      %td= mobile.brand
+      %td= mobile.touchscreen
+      %td= mobile.display_size
+      %td= mobile.weight
+      %td= mobile.price_for_display
+
+= link_to 'Back', root_path
+|
+= link_to 'My order', user_cart_path(@user)

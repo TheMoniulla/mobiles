@@ -1,0 +1,6 @@
+%h1 Welcome to our shop online!
+
+%ul
+  -@users.each do |user|
+    %li
+      = link_to user.name, user_mobiles_path(user)

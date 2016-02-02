@@ -1,0 +1,31 @@
+%h1 My order
+
+= link_to 'Add other product', user_mobiles_path(@user), class: 'btn btn-success'
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Brand
+    %th Quantity
+    %th Price
+    %th Total price
+    %th Actions
+  - @cart_items.each do |cart_item|
+    %tr
+      %td= cart_item.mobile.name
+      %td= cart_item.mobile.brand
+      %td= cart_item.quantity
+      %td= cart_item.mobile.price_for_display
+      %td= cart_item.total_price_for_display
+      %td
+        = link_to 'Show', user_mobile_path(@user, cart_item.mobile)
+        = link_to 'Delete', user_cart_item_path(@user, cart_item), method: :delete, data: {confirm: 'Are you sure?'}
+  %tr
+    %td
+    %td
+    %td
+    %td
+    %td= @user.cart.total_price_for_display
+    %td
+
+= link_to 'Back to list', user_mobiles_path(@user)
